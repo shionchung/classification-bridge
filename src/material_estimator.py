@@ -73,15 +73,20 @@ class MaterialPassportEstimator:
 
     @staticmethod
     def _year_to_era(year: int) -> str:
+        """Era buckets aligned to shifts ~1980 and ~2005 in AU construction practice."""
         if year < 1960:
             return "pre_1960"
         if year < 1980:
             return "1960_1979"
+        if year < 1990:
+            return "1980_1989"
         if year < 2000:
-            return "1980_1999"
-        if year < 2010:
-            return "2000_2009"
-        return "2010_present"
+            return "1990_1999"
+        if year < 2005:
+            return "2000_2004"
+        if year < 2015:
+            return "2005_2014"
+        return "2015_present"
 
 
 def main() -> None:

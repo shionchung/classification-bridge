@@ -13,6 +13,8 @@ from src.material_estimator import MaterialPassportEstimator
 BUILDING_LABELS = {
     "commercial_office": "Commercial office",
     "residential_detached": "Residential (detached house)",
+    "residential_apartment": "Residential (apartment / flat)",
+    "education": "Education (school / university)",
     "industrial_warehouse": "Industrial / warehouse",
 }
 
@@ -55,7 +57,8 @@ with st.sidebar:
     st.markdown("**Data status**")
     st.warning(
         "Material intensities are research placeholders until populated from "
-        "AHURI Report 402 and Stephan & Crawford literature."
+        "AHURI Report 402 and Stephan & Crawford literature. "
+        "Edit `data/au_material_intensities.csv` and `data/au_building_stock_meta.csv`."
     )
     available = sorted({f"{bt} / {era}" for bt, era in MATERIAL_INTENSITIES})
     with st.expander(f"Available type × era combos ({len(available)})"):

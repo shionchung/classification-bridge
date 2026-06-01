@@ -97,7 +97,9 @@ classification-bridge/
 ├── tests/                      # pytest sanity checks
 ├── mappings/manual_mappings.csv
 ├── data/
-│   ├── au_building_stock.py    # kg/m² by (type, era)
+│   ├── au_material_intensities.csv   # kg/m² (editable)
+│   ├── au_building_stock_meta.csv    # confidence + source per type×era
+│   ├── au_building_stock.py          # CSV loader
 │   └── README.md
 └── src/
     ├── api.py                  # FastAPI
@@ -115,7 +117,7 @@ classification-bridge/
   "building_type": "commercial_office",
   "floor_area_m2": 3500,
   "year_built": 1987,
-  "era": "1980_1999",
+  "era": "1980_1989",
   "confidence": "low",
   "materials": [
     {

@@ -19,4 +19,13 @@ Focus on high-mass materials first (structural steel, in-situ concrete, timber f
 
 ## Intensities (Project 3)
 
-Edit `data/au_building_stock.py` with kg/m² values and cite the source in `_source`. Do not copy numbers without a reference.
+Edit the CSV files (no Python required):
+
+| File | Purpose |
+|------|---------|
+| `data/au_material_intensities.csv` | `building_type`, `era`, `material_key`, `kg_per_m2` |
+| `data/au_building_stock_meta.csv` | `building_type`, `era`, `confidence`, `source` |
+
+Add one row per material in the intensities file. Set `confidence` and `source` once per type × era in the meta file. Era buckets: `pre_1960`, `1960_1979`, `1980_1989`, `1990_1999`, `2000_2004`, `2005_2014`, `2015_present`.
+
+Do not copy kg/m² numbers without a reference. Run `pytest` after edits.

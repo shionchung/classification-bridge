@@ -1,0 +1,36 @@
+building_type,era,confidence,source
+commercial_office,pre_1960,low,PLACEHOLDER — populate from AHURI Report 402
+commercial_office,1960_1979,low,PLACEHOLDER — populate from AHURI Report 402
+commercial_office,1980_1989,low,PLACEHOLDER — AHURI 402 + Stephan & Crawford (1980s)
+commercial_office,1990_1999,low,PLACEHOLDER — AHURI 402 + Stephan & Crawford (1990s)
+commercial_office,2000_2004,low,PLACEHOLDER — pre-2005 BCA practice
+commercial_office,2005_2014,low,PLACEHOLDER — post-2005 sustainability shift
+commercial_office,2015_present,low,PLACEHOLDER — contemporary office stock
+residential_detached,pre_1960,low,PLACEHOLDER — AHURI / Stephan & Crawford
+residential_detached,1960_1979,low,PLACEHOLDER
+residential_detached,1980_1989,low,PLACEHOLDER
+residential_detached,1990_1999,low,PLACEHOLDER
+residential_detached,2000_2004,low,PLACEHOLDER
+residential_detached,2005_2014,low,PLACEHOLDER
+residential_detached,2015_present,low,PLACEHOLDER
+residential_apartment,pre_1960,low,PLACEHOLDER — Stephan & Crawford apartments
+residential_apartment,1960_1979,low,PLACEHOLDER
+residential_apartment,1980_1989,low,PLACEHOLDER
+residential_apartment,1990_1999,low,PLACEHOLDER
+residential_apartment,2000_2004,low,PLACEHOLDER
+residential_apartment,2005_2014,low,PLACEHOLDER
+residential_apartment,2015_present,low,PLACEHOLDER
+education,pre_1960,low,PLACEHOLDER — Stephan & Crawford education
+education,1960_1979,low,PLACEHOLDER
+education,1980_1989,low,PLACEHOLDER
+education,1990_1999,low,PLACEHOLDER
+education,2000_2004,low,PLACEHOLDER
+education,2005_2014,low,PLACEHOLDER
+education,2015_present,low,PLACEHOLDER
+industrial_warehouse,pre_1960,low,PLACEHOLDER
+industrial_warehouse,1960_1979,low,PLACEHOLDER
+industrial_warehouse,1980_1989,low,PLACEHOLDER
+industrial_warehouse,1990_1999,low,PLACEHOLDER
+industrial_warehouse,2000_2004,low,PLACEHOLDER
+industrial_warehouse,2005_2014,low,PLACEHOLDER
+industrial_warehouse,2015_present,low,PLACEHOLDER
