@@ -1,6 +1,7 @@
 """FastAPI lookup service for classification mappings."""
 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import RedirectResponse
 
 from src.mapper import ClassificationMapper
 
@@ -10,6 +11,12 @@ app = FastAPI(
     version="0.1.0",
 )
 mapper = ClassificationMapper()
+
+
+@app.get("/", include_in_schema=False)
+def root():
+    """Browser-friendly entry point — raw JSON lives on the paths below."""
+    return RedirectResponse(url="/docs")
 
 
 @app.get("/health")

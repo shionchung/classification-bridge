@@ -60,6 +60,15 @@ Example: `http://127.0.0.1:8000/map/uniclass/Pr_20_93_74_16`
 python -m src.material_estimator
 ```
 
+### Tests
+
+Sanity checks for the mapper, estimator, and API (golden Uniclass code, JSON shape, kg arithmetic):
+
+```powershell
+pip install -r requirements-dev.txt
+pytest
+```
+
 ---
 
 ## Source data downloads
@@ -85,6 +94,7 @@ python -m src.loader --explore
 ```
 classification-bridge/
 ├── app.py                      # Streamlit UI
+├── tests/                      # pytest sanity checks
 ├── mappings/manual_mappings.csv
 ├── data/
 │   ├── au_building_stock.py    # kg/m² by (type, era)

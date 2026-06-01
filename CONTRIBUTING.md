@@ -10,7 +10,8 @@ material_name,uniclass_pr,uniclass_ss,nlsfb_element,etim_code,confidence,notes
 ```
 
 3. Set `confidence` honestly: `low` if approximate, `medium` if verified in two sources, `high` if expert-reviewed.
-4. Restart the API or Streamlit app to reload the SQLite cache.
+4. Run `pytest` — if you change a golden code in the CSV, update the constants in `tests/test_mapper.py` and `tests/test_api.py`.
+5. Restart the API or Streamlit app to reload the SQLite cache.
 
 ## Priority list
 
