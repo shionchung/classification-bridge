@@ -160,5 +160,4 @@ class ClassificationMapper:
             "confidence": data.get("confidence", "unknown"),
             "review_status": data.get("review_status", "draft"),
             "mapping_notes": data.get("mapping_notes") or "",
-            "fuzzy_match_score": data.get("fuzzy_match_score"),
         }

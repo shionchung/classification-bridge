@@ -48,7 +48,6 @@ V2_COLUMNS = [
     "confidence",
     "review_status",
     "mapping_notes",
-    "fuzzy_match_score",
 ]
 
 
@@ -76,7 +75,6 @@ def migrate_row(row: dict) -> dict:
         "confidence": row.get("confidence", "low"),
         "review_status": row.get("review_status", "draft"),
         "mapping_notes": notes,
-        "fuzzy_match_score": row.get("fuzzy_match_score", ""),
     }
 
 

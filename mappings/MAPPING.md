@@ -72,9 +72,11 @@ Mass-dominated Australian stock — target ~20 rows before expanding to 50:
 
 1. Download source tables — see [`data/README.md`](../data/README.md).  
 2. Optional: run `python scripts/suggest_etim_matches.py` for ETIM **candidates** (never auto-commit).  
-3. Curate in Google Sheet using `scripts/export_mapping_template.py` output; export CSV.  
-4. Replace `manual_mappings.csv`; run `pytest`.  
+3. Curate in Google Sheet using `scripts/export_mapping_template.py` output; export CSV.
+4. Replace `manual_mappings.csv`; run `pytest`.
 5. Per row: Uniclass Pr (NBS) → ETIM (confirm) → NL-SfB Table 3 → NL-SfB Table 1.
+
+Use `python scripts/suggest_etim_matches.py` for **candidates only** — fuzzy scores live in `mappings/etim_candidates.csv`, not in `manual_mappings.csv` (verified rows must not imply algorithmic mapping).
 
 Git CSV is the **only** canonical store.
 

@@ -23,7 +23,6 @@ COLUMNS = [
     "confidence",
     "review_status",
     "mapping_notes",
-    "fuzzy_match_score",
 ]
 
 EXAMPLE = {
@@ -40,7 +39,6 @@ EXAMPLE = {
     "confidence": "medium",
     "review_status": "draft",
     "mapping_notes": "Table 1 = load-bearing steel structure; Table 3 Q5 = steel/iron",
-    "fuzzy_match_score": "",
 }
 
 

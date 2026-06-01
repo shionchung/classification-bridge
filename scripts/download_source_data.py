@@ -3,7 +3,8 @@
 Download classification source files into data/ (where publicly available).
 
 Downloads automatically:
-  - Uniclass 2015 Pr, Ss, EF (CSV from buildig/uniclass-2015, CC-licensed mirror of NBS) -> xlsx
+  - Uniclass 2015 Pr, Ss, EF via buildig/uniclass-2015 (GitHub mirror of NBS — NOT the
+    live thenbs.com feed; verify against https://www.thenbs.com/uniclass before citing codes)
   - NL-SfB tables 0-4 (BIM Loket / STABU blob) -> nlsfb_table1.xlsx, nlsfb_table3.xlsx
 
 ETIM 9 Excel (public release zip from ETIM International).
@@ -24,6 +25,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 
+# Mirror of NBS Uniclass 2015 (Jan 2022 snapshot on GitHub). If this repo goes stale,
+# download current tables from https://www.thenbs.com/uniclass/download and replace data/*.xlsx.
 UNICLASS_CSV_URLS = {
     "uniclass_pr.csv": "https://raw.githubusercontent.com/buildig/uniclass-2015/master/uniclass2015/Uniclass2015_Pr.csv",
     "uniclass_ss.csv": "https://raw.githubusercontent.com/buildig/uniclass-2015/master/uniclass2015/Uniclass2015_Ss.csv",
@@ -115,9 +118,9 @@ def write_status() -> None:
         "|------|--------|--------|",
     ]
     files = [
-        ("uniclass_pr.xlsx", "Uniclass Pr", "buildig/uniclass-2015 (NBS mirror)"),
-        ("uniclass_ss.xlsx", "Uniclass Ss", "buildig/uniclass-2015"),
-        ("uniclass_ef.xlsx", "Uniclass EF", "buildig/uniclass-2015"),
+        ("uniclass_pr.xlsx", "Uniclass Pr", "buildig/uniclass-2015 mirror — verify at thenbs.com/uniclass"),
+        ("uniclass_ss.xlsx", "Uniclass Ss", "buildig/uniclass-2015 mirror"),
+        ("uniclass_ef.xlsx", "Uniclass EF", "buildig/uniclass-2015 mirror"),
         ("nlsfb_table1.xlsx", "NL-SfB Table 1", "BIM Loket / STABU blob"),
         ("nlsfb_table3.xlsx", "NL-SfB Table 3", "BIM Loket / STABU blob"),
         ("etim.xlsx", "ETIM 9", "ETIM International release zip"),

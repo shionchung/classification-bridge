@@ -8,7 +8,7 @@ Read [`mappings/MAPPING.md`](mappings/MAPPING.md) first — it explains Uniclass
 2. Add a row to [`mappings/manual_mappings.csv`](mappings/manual_mappings.csv) (schema v2):
 
 ```csv
-material_key,material_name,uniclass_pr,uniclass_ss,uniclass_edition,nlsfb_element,nlsfb_material,nlsfb_edition,etim_code,etim_version,confidence,review_status,mapping_notes,fuzzy_match_score
+material_key,material_name,uniclass_pr,uniclass_ss,uniclass_edition,nlsfb_element,nlsfb_material,nlsfb_edition,etim_code,etim_version,confidence,review_status,mapping_notes
 ```
 
 3. Set `review_status=verified` only when two independent sources are cited in `mapping_notes`.
