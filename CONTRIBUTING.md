@@ -1,31 +1,46 @@
 # Contributing mappings
 
+Read [`mappings/MAPPING.md`](mappings/MAPPING.md) first — it explains Uniclass Pr vs NL-SfB Table 1 vs Table 3 vs ETIM.
+
 ## Adding a material row
 
-1. Look up the same physical product in each source table (Uniclass Pr/Ss, NL-SfB, ETIM).
-2. Add a row to `mappings/manual_mappings.csv`:
+1. Look up the product in Uniclass Pr (NBS), ETIM 9, NL-SfB Table 1 (element), and NL-SfB Table 3 (material).
+2. Add a row to [`mappings/manual_mappings.csv`](mappings/manual_mappings.csv) (schema v2):
 
 ```csv
-material_name,uniclass_pr,uniclass_ss,nlsfb_element,etim_code,confidence,notes
+material_key,material_name,uniclass_pr,uniclass_ss,uniclass_edition,nlsfb_element,nlsfb_material,nlsfb_edition,etim_code,etim_version,confidence,review_status,mapping_notes,fuzzy_match_score
 ```
 
-3. Set `confidence` honestly: `low` if approximate, `medium` if verified in two sources, `high` if expert-reviewed.
-4. Run `pytest` — if you change a golden code in the CSV, update the constants in `tests/test_mapper.py` and `tests/test_api.py`.
+3. Set `review_status=verified` only when two independent sources are cited in `mapping_notes`.
+4. Run `pytest` — update golden constants in `tests/test_mapper.py` if codes change.
 5. Restart the API or Streamlit app to reload the SQLite cache.
+
+### Google Sheet workflow
+
+```powershell
+python scripts/export_mapping_template.py
+```
+
+Import `mappings/mapping_curation_template.csv` into a Sheet, curate, export CSV, replace `manual_mappings.csv`. Git CSV remains canonical.
+
+### ETIM fuzzy candidates (assist only)
+
+```powershell
+pip install -r requirements-dev.txt
+python scripts/suggest_etim_matches.py
+```
+
+Review `mappings/etim_candidates.csv` — never auto-merge into `manual_mappings.csv`.
 
 ## Priority list
 
-Focus on high-mass materials first (structural steel, in-situ concrete, timber framing, brick, glass, insulation, plasterboard).
+See **Core materials** in `MAPPING.md`. Map mass-dominated materials first; split reinforced concrete into slab / column / beam rows.
 
 ## Intensities (Project 3)
-
-Edit the CSV files (no Python required):
 
 | File | Purpose |
 |------|---------|
 | `data/au_material_intensities.csv` | `building_type`, `era`, `material_key`, `kg_per_m2` |
 | `data/au_building_stock_meta.csv` | `building_type`, `era`, `confidence`, `source` |
 
-Add one row per material in the intensities file. Set `confidence` and `source` once per type × era in the meta file. Era buckets: `pre_1960`, `1960_1979`, `1980_1989`, `1990_1999`, `2000_2004`, `2005_2014`, `2015_present`.
-
-Do not copy kg/m² numbers without a reference. Run `pytest` after edits.
+`material_key` must match a row in `manual_mappings.csv`. Run `pytest` after edits.

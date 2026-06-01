@@ -1,0 +1,13 @@
+# Keywords to filter Uniclass Pr rows in suggest_etim_matches.py (optional)
+steel
+concrete
+timber
+brick
+glass
+aluminium
+plaster
+insulation
+copper
+roof
+masonry
+gypsum

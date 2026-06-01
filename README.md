@@ -47,9 +47,9 @@ uvicorn src.api:app --reload
 
 | Endpoint | Description |
 |----------|-------------|
-| `GET /map/uniclass/{code}` | Map a Uniclass Pr code to NL-SfB + ETIM |
-| `GET /search/{query}` | Search materials by name |
-| `GET /materials` | List all mapped materials |
+| `GET /map/uniclass/{code}` | Full crosswalk (Uniclass + NL-SfB T1/T3 + ETIM) |
+| `GET /search/{query}` | Search materials by name or material_key |
+| `GET /materials` | List mappings; optional `?review_status=verified` |
 | `GET /health` | Health check |
 
 Example: `http://127.0.0.1:8000/map/uniclass/Pr_20_93_74_16`
@@ -73,7 +73,13 @@ pytest
 
 ## Source data downloads
 
-Place Excel exports in `data/` (see [data/README.md](data/README.md)):
+```powershell
+python scripts/download_source_data.py
+```
+
+This fetches Uniclass Pr/Ss/EF, NL-SfB Table 1 & 3, and ETIM 9 into `data/` (gitignored). See [data/DOWNLOAD_STATUS.md](data/DOWNLOAD_STATUS.md).
+
+Manual reference (see [data/README.md](data/README.md)):
 
 | File | Source |
 |------|--------|
@@ -95,7 +101,8 @@ python -m src.loader --explore
 classification-bridge/
 ├── app.py                      # Streamlit UI
 ├── tests/                      # pytest sanity checks
-├── mappings/manual_mappings.csv
+├── mappings/manual_mappings.csv   # schema v2 — see mappings/MAPPING.md
+├── mappings/MAPPING.md
 ├── data/
 │   ├── au_material_intensities.csv   # kg/m² (editable)
 │   ├── au_building_stock_meta.csv    # confidence + source per type×era
@@ -123,12 +130,15 @@ classification-bridge/
     {
       "material": "structural_steel",
       "estimated_kg": 182000,
-      "uniclass_pr": "Pr_20_93_74_16",
-      "nlsfb": "28.21",
-      "etim": "EC001719"
+      "classification": {
+        "uniclass": { "pr": "Pr_20_93_74_16", "ss": "Ss_25_13_70", "edition": "2015" },
+        "nlsfb": { "element": "28.21", "material": "Q5", "edition": "2005" },
+        "etim": { "code": "EC001719", "version": "9" }
+      },
+      "mapping_review_status": "verified"
     }
   ],
-  "passport_format_version": "0.1-AU"
+  "passport_format_version": "0.2-AU"
 }
 ```
 

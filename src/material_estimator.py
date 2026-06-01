@@ -9,8 +9,14 @@ from src.mapper import ClassificationMapper
 
 
 class MaterialPassportEstimator:
-    def __init__(self, mapper: ClassificationMapper | None = None):
+    def __init__(
+        self,
+        mapper: ClassificationMapper | None = None,
+        *,
+        legacy_flat_codes: bool = True,
+    ):
         self.mapper = mapper or ClassificationMapper()
+        self.legacy_flat_codes = legacy_flat_codes
 
     def estimate(
         self,
@@ -35,6 +41,7 @@ class MaterialPassportEstimator:
 
         intensities = MATERIAL_INTENSITIES[key]
         materials = []
+        unverified_mappings = 0
 
         for material_name, kg_per_m2 in intensities.items():
             if material_name.startswith("_"):
@@ -43,21 +50,39 @@ class MaterialPassportEstimator:
                 continue
 
             total_kg = kg_per_m2 * floor_area_m2
-            classification = self.mapper.search_by_material_key(material_name)
-            first = classification[0] if classification else {}
-
-            materials.append(
-                {
-                    "material": material_name,
-                    "estimated_kg": round(total_kg, 1),
-                    "kg_per_m2": kg_per_m2,
-                    "uniclass_pr": first.get("uniclass_pr"),
-                    "uniclass_ss": first.get("uniclass_ss"),
-                    "nlsfb": first.get("nlsfb_element"),
-                    "etim": first.get("etim_code"),
-                    "mapping_confidence": first.get("confidence"),
+            classification_rows = self.mapper.search_by_material_key(material_name)
+            first = classification_rows[0] if classification_rows else {}
+            block = (
+                ClassificationMapper.build_classification_block(first)
+                if first
+                else {
+                    "uniclass": {"pr": None, "ss": None, "edition": "2015"},
+                    "nlsfb": {"element": None, "material": None, "edition": "2005"},
+                    "etim": {"code": None, "version": "9"},
                 }
             )
+            review_status = first.get("review_status") or "missing"
+            if review_status != "verified":
+                unverified_mappings += 1
+
+            row: dict[str, Any] = {
+                "material": material_name,
+                "estimated_kg": round(total_kg, 1),
+                "kg_per_m2": kg_per_m2,
+                "classification": block,
+                "mapping_confidence": first.get("confidence"),
+                "mapping_review_status": review_status,
+            }
+
+            if self.legacy_flat_codes:
+                row["uniclass_pr"] = block["uniclass"]["pr"]
+                row["uniclass_ss"] = block["uniclass"]["ss"]
+                row["nlsfb"] = block["nlsfb"]["element"]
+                row["nlsfb_element"] = block["nlsfb"]["element"]
+                row["nlsfb_material"] = block["nlsfb"]["material"]
+                row["etim"] = block["etim"]["code"]
+
+            materials.append(row)
 
         return {
             "building_type": building_type,
@@ -68,7 +93,11 @@ class MaterialPassportEstimator:
             "confidence": intensities.get("_confidence", "unknown"),
             "data_source": intensities.get("_source", "unknown"),
             "materials": materials,
-            "passport_format_version": "0.1-AU",
+            "passport_format_version": "0.2-AU",
+            "mapping_summary": {
+                "total_materials": len(materials),
+                "unverified_mappings": unverified_mappings,
+            },
         }
 
     @staticmethod

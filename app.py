@@ -79,6 +79,13 @@ if run:
         if passport.get("available_keys"):
             st.info("Try one of these combinations:\n\n" + "\n".join(passport["available_keys"]))
     else:
+        summary = passport.get("mapping_summary", {})
+        unverified = summary.get("unverified_mappings", 0)
+        if unverified:
+            st.warning(
+                f"{unverified} of {summary.get('total_materials', 0)} material rows use mappings "
+                "that are not `verified`. See mappings/MAPPING.md before citing in reports."
+            )
         col1, col2, col3, col4 = st.columns(4)
         col1.metric("Era", passport["era"].replace("_", "–"))
         col2.metric("Confidence", passport.get("confidence", "—"))
@@ -121,6 +128,6 @@ else:
 st.divider()
 st.markdown(
     "#### Classification lookup (Project 4)\n"
-    "Mappings live in `mappings/manual_mappings.csv`. "
+    "Mappings live in `mappings/manual_mappings.csv` (schema v2 — see `mappings/MAPPING.md`). "
     "Run the API with: `uvicorn src.api:app --reload`"
 )

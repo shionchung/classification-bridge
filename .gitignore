@@ -9,3 +9,8 @@ mappings.db
 data/*.xlsx
 data/*.xls
 !data/.gitkeep
+data/uniclass_*.csv
+data/etim9.zip
+data/etim_extract/
+data/nlsfb_combined.xlsx
+mappings/etim_candidates.csv

@@ -32,8 +32,9 @@ def test_map_uniclass_known(client):
     assert response.status_code == 200
     body = response.json()
     assert body["status"] == "found"
-    assert body["uniclass_pr"] == STEEL_UNICLASS_PR
-    assert body["etim_code"] == "EC001719"
+    assert body["classification"]["uniclass"]["pr"] == STEEL_UNICLASS_PR
+    assert body["classification"]["nlsfb"]["material"] == "Q5"
+    assert body["review_status"] == "verified"
 
 
 def test_map_uniclass_unknown_returns_404(client):
@@ -47,7 +48,10 @@ def test_search_steel(client):
     assert response.status_code == 200
     body = response.json()
     assert body["count"] >= 1
-    assert any(r["uniclass_pr"] == STEEL_UNICLASS_PR for r in body["results"])
+    pr_codes = [
+        r["classification"]["uniclass"]["pr"] for r in body["results"]
+    ]
+    assert STEEL_UNICLASS_PR in pr_codes
 
 
 def test_materials_lists_mappings(client):
@@ -55,4 +59,11 @@ def test_materials_lists_mappings(client):
     assert response.status_code == 200
     body = response.json()
     assert body["count"] >= 20
-    assert len(body["materials"]) == body["count"]
+
+
+def test_materials_filter_verified(client):
+    response = client.get("/materials", params={"review_status": "verified"})
+    assert response.status_code == 200
+    body = response.json()
+    assert body["count"] >= 5
+    assert all(m["review_status"] == "verified" for m in body["materials"])

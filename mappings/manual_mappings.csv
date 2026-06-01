@@ -1,21 +1,26 @@
-material_name,uniclass_pr,uniclass_ss,nlsfb_element,etim_code,confidence,notes
-Structural steel I-beam,Pr_20_93_74_16,Ss_25_13_70,28.21,EC001719,medium,Verify against current NBS Pr table
-Reinforced concrete in-situ,Pr_20_65_97,Ss_25_13_30,28.10,EC001483,medium,Standard ~32 MPa in-situ
-Precast concrete panel,Pr_20_65_52,Ss_25_13_35,28.12,EC001484,medium,Generic precast element
-Softwood timber framing,Pr_20_93_74_96,Ss_25_13_75,28.31,EC001876,low,90x45 typical AU framing — verify ETIM
-Engineered timber LVL,Pr_20_93_52_52,Ss_25_13_76,28.32,EC001877,low,LVL/glulam — codes need expert review
-Brick clay,Pr_20_30_13,Ss_25_20_30,21.12,EC000042,medium,Masonry brick
-Concrete masonry unit,Pr_20_30_52,Ss_25_20_35,21.15,EC000043,medium,CMU/block
-Float glass,Pr_25_69_19,Ss_25_50_30,31.21,EC000463,medium,Standard 6 mm clear
-Aluminium framing,Pr_25_31_12,Ss_25_40_20,32.21,EC001234,low,Generic extruded section
-Aluminium cladding panel,Pr_25_31_12,Ss_31_10_55,32.22,EC001234,low,ACP — product-level ETIM varies
-Plasterboard gypsum,Pr_20_85_52,Ss_25_45_30,23.41,EC000891,medium,Standard board
-Mineral wool insulation,Pr_20_45_52,Ss_25_35_30,27.32,EC000712,medium,Batts/blanket
-EPS insulation,Pr_20_45_13,Ss_25_35_35,27.33,EC000713,medium,Expanded polystyrene
-Copper pipe,Pr_55_70_52,Ss_55_15_30,54.21,EC010234,low,Plumbing — verify Uniclass Pr
-PVC pipe,Pr_55_70_96,Ss_55_15_35,54.22,EC010235,low,Drainage/supply — verify codes
-Galvanised steel sheet,Pr_20_93_52,Ss_25_13_72,28.25,EC001720,low,Roofing/cladding substrate
-Portland cement,Pr_20_65_13,Ss_25_10_10,28.01,EC001480,low,Bulk material — often not in BIM exports
-Ceramic tile,Pr_20_80_52,Ss_25_55_30,23.52,EC000950,medium,Floor/wall finish
-Carpet,Pr_20_80_96,Ss_25_55_50,23.61,EC000960,medium,Generic broadloom
-Vinyl flooring,Pr_20_80_97,Ss_25_55_55,23.62,EC000961,medium,LVT/sheet vinyl
+material_key,material_name,uniclass_pr,uniclass_ss,uniclass_edition,nlsfb_element,nlsfb_material,nlsfb_edition,etim_code,etim_version,confidence,review_status,mapping_notes,fuzzy_match_score
+structural_steel,Structural steel I-beam,Pr_20_93_74_16,Ss_25_13_70,2015,28.21,Q5,2005,EC001719,9,high,verified,"Uniclass Pr NBS 2015; ETIM EC001719 steel profile; NL-SfB T1 28.21 load-bearing steel; T3 Q5 steel/iron (BIM Loket Table 3)",
+reinforced_concrete,Reinforced concrete in-situ,Pr_20_65_97,Ss_25_13_30,2015,28.10,Q4,2005,EC001483,9,high,verified,"Uniclass Pr in-situ concrete; ETIM EC001483; NL-SfB T1 28.10 concrete structure; T3 Q4 concrete",
+reinforced_concrete_slab,Reinforced concrete slab,Pr_20_65_97,Ss_25_13_30,2015,28.11,Q4,2005,EC001483,9,medium,verified,"Same Pr as in-situ; T1 28.11 floor structures; separate recycling path from columns/beams",
+reinforced_concrete_column,Reinforced concrete column,Pr_20_65_97,Ss_25_13_30,2015,28.12,Q4,2005,EC001483,9,medium,verified,"T1 28.12 vertical structure; demolition sorting differs from slab",
+reinforced_concrete_beam,Reinforced concrete beam,Pr_20_65_97,Ss_25_13_30,2015,28.13,Q4,2005,EC001483,9,medium,verified,"T1 28.13 horizontal structure; verify code against BIM Loket Table 1",
+precast_concrete,Precast concrete panel,Pr_20_65_52,Ss_25_13_35,2015,28.12,Q4,2005,EC001484,9,medium,draft,Precast element — verify ETIM and Table 1 code,
+concrete_slab,Concrete ground slab,Pr_20_65_97,Ss_25_10_20,2015,28.11,Q4,2005,EC001483,9,medium,verified,"Residential/industrial slabs; joins intensities material_key concrete_slab",
+softwood_timber,Softwood timber framing,Pr_20_93_74_96,Ss_25_13_75,2015,28.31,Q6,2005,EC001876,9,medium,draft,90x45 AU framing — verify Table 3 Q6 wood,
+engineered_timber,Engineered timber LVL,Pr_20_93_52_52,Ss_25_13_76,2015,28.32,Q6,2005,EC001877,9,low,needs_source,LVL/glulam — expert review required,
+brick_clay,Brick clay,Pr_20_30_13,Ss_25_20_30,2015,21.12,Q2,2005,EC000042,9,high,verified,"Uniclass masonry brick; ETIM EC000042; T1 21.12 external wall; T3 Q2 masonry",
+concrete_masonry,Concrete masonry unit,Pr_20_30_52,Ss_25_20_35,2015,21.15,Q4,2005,EC000043,9,medium,draft,CMU/block,
+float_glass,Float glass,Pr_25_69_19,Ss_25_50_30,2015,31.21,Q8,2005,EC000463,9,high,verified,"Uniclass Pr glazing; ETIM EC000463; T1 31.21 windows; T3 Q8 glass",
+aluminium,Aluminium extrusions,Pr_25_31_12,Ss_25_40_20,2015,32.21,Q5,2005,EC001234,9,low,needs_source,Generic extruded section — verify ETIM,
+aluminium_cladding,Aluminium cladding panel,Pr_25_31_12,Ss_31_10_55,2015,32.22,Q5,2005,EC001234,9,low,draft,ACP — product-level ETIM varies,
+plasterboard,Plasterboard gypsum,Pr_20_85_52,Ss_25_45_30,2015,23.41,Q7,2005,EC000891,9,high,verified,"Uniclass board; ETIM EC000891; T1 23.41 internal finish; T3 Q7 gypsum",
+mineral_wool,Mineral wool insulation,Pr_20_45_52,Ss_25_35_30,2015,27.32,Q9,2005,EC000712,9,medium,draft,Batts/blanket — verify Table 3,
+eps_insulation,EPS insulation,Pr_20_45_13,Ss_25_35_35,2015,27.33,Q9,2005,EC000713,9,medium,draft,Expanded polystyrene,
+membrane_roofing,Membrane roofing,Pr_25_45_52,Ss_25_25_70,2015,25.12,Q9,2005,EC000891,9,low,needs_source,Core-20 roofing — verify Uniclass Pr and ETIM against NBS,
+copper,Copper pipe,Pr_55_70_52,Ss_55_15_30,2015,54.21,Q5,2005,EC010234,9,medium,draft,Plumbing services,
+pvc,PVC pipe,Pr_55_70_96,Ss_55_15_35,2015,54.22,Q9,2005,EC010235,9,low,draft,Drainage/supply,
+galvanised_steel,Galvanised steel sheet,Pr_20_93_52,Ss_25_13_72,2015,28.25,Q5,2005,EC001720,9,low,draft,Roofing/cladding substrate,
+portland_cement,Portland cement,Pr_20_65_13,Ss_25_10_10,2015,28.01,Q4,2005,EC001480,9,low,draft,Bulk material — often not in BIM exports,
+ceramic_tile,Ceramic tile,Pr_20_80_52,Ss_25_55_30,2015,23.52,Q2,2005,EC000950,9,medium,draft,Floor/wall finish,
+carpet,Carpet,Pr_20_80_96,Ss_25_55_50,2015,23.61,Q9,2005,EC000960,9,medium,draft,Generic broadloom,
+vinyl_flooring,Vinyl flooring,Pr_20_80_97,Ss_25_55_55,2015,23.62,Q9,2005,EC000961,9,medium,draft,LVT/sheet vinyl,

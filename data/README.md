@@ -13,21 +13,33 @@ Editable in Excel or any spreadsheet — no Python required:
 
 ---
 
-## Classification source files (download manually)
+## Classification source files
 
-Place downloaded spreadsheets here. Large vendor files are gitignored.
+**One-command download** (Uniclass, NL-SfB, ETIM — ~15 MB total, gitignored):
+
+```powershell
+python scripts/download_source_data.py
+```
+
+Status table: [`DOWNLOAD_STATUS.md`](DOWNLOAD_STATUS.md). Large vendor files stay local only.
 
 | File | Source |
 |------|--------|
 | `uniclass_pr.xlsx` | [NBS Uniclass](https://www.thenbs.com/uniclass) — Products (Pr) |
 | `uniclass_ss.xlsx` | NBS Uniclass — Systems (Ss) |
 | `uniclass_ef.xlsx` | NBS Uniclass — Elements/Functions (EF) |
-| `nlsfb.xlsx` | NL-SfB 2005 — [BIM Loket](https://www.bimloket.nl/) / stabu.nl |
-| `etim.xlsx` | [ETIM International](https://www.etim-international.com/) (free registration) |
+| `nlsfb_table1.xlsx` | NL-SfB **Table 1** — elements (position/function) → `nlsfb_element` in mappings |
+| `nlsfb_table3.xlsx` | NL-SfB **Table 3** — materials (e.g. Q5 steel) → `nlsfb_material` in mappings |
+| `nlsfb.xlsx` | Optional combined export if Table 1+3 not split |
+| `etim.xlsx` | [ETIM International](https://www.etim-international.com/) — ETIM 9 (free registration) |
 | `omniclass.xlsx` | [CSI OmniClass](https://www.csinet.org/omniclass) (optional) |
 
 After downloading, run:
 
 ```bash
 python -m src.loader --explore
+python -m src.loader --table nlsfb1   # Table 1 only
+python -m src.loader --table nlsfb3   # Table 3 only
 ```
+
+See [`mappings/MAPPING.md`](../mappings/MAPPING.md) for how Table 1 and Table 3 differ.

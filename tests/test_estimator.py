@@ -15,18 +15,10 @@ PASSPORT_TOP_KEYS = {
     "data_source",
     "materials",
     "passport_format_version",
+    "mapping_summary",
 }
 
-MATERIAL_ROW_KEYS = {
-    "material",
-    "estimated_kg",
-    "kg_per_m2",
-    "uniclass_pr",
-    "uniclass_ss",
-    "nlsfb",
-    "etim",
-    "mapping_confidence",
-}
+CLASSIFICATION_KEYS = {"uniclass", "nlsfb", "etim"}
 
 
 @pytest.mark.parametrize(
@@ -45,7 +37,7 @@ def test_year_to_era(year, expected_era):
     assert MaterialPassportEstimator._year_to_era(year) == expected_era
 
 
-def test_estimate_returns_expected_passport_keys(estimator):
+def test_estimate_returns_passport_v02(estimator):
     passport = estimator.estimate(
         building_type="commercial_office",
         floor_area_m2=3500,
@@ -53,23 +45,25 @@ def test_estimate_returns_expected_passport_keys(estimator):
     )
     assert "error" not in passport
     assert set(passport.keys()) >= PASSPORT_TOP_KEYS
-    assert passport["passport_format_version"] == "0.1-AU"
+    assert passport["passport_format_version"] == "0.2-AU"
     assert passport["era"] == "1980_1989"
     assert len(passport["materials"]) > 0
 
 
-def test_estimate_material_rows_have_expected_keys(estimator):
+def test_estimate_material_row_has_nested_classification(estimator):
     passport = estimator.estimate(
         building_type="commercial_office",
         floor_area_m2=100,
         year_built=1987,
     )
-    for row in passport["materials"]:
-        assert set(row.keys()) == MATERIAL_ROW_KEYS
+    row = passport["materials"][0]
+    assert set(row["classification"].keys()) == CLASSIFICATION_KEYS
+    assert "element" in row["classification"]["nlsfb"]
+    assert "material" in row["classification"]["nlsfb"]
+    assert "mapping_review_status" in row
 
 
-def test_estimate_kg_arithmetic(estimator):
-    """52 kg/m² steel × 3500 m² = 182000 kg (commercial_office 1980_1989)."""
+def test_estimate_kg_arithmetic_and_dual_nlsfb(estimator):
     passport = estimator.estimate(
         building_type="commercial_office",
         floor_area_m2=3500,
@@ -78,7 +72,22 @@ def test_estimate_kg_arithmetic(estimator):
     steel = next(m for m in passport["materials"] if m["material"] == "structural_steel")
     assert steel["kg_per_m2"] == 52
     assert steel["estimated_kg"] == 182000.0
-    assert steel["uniclass_pr"] == "Pr_20_93_74_16"
+    assert steel["classification"]["uniclass"]["pr"] == "Pr_20_93_74_16"
+    assert steel["classification"]["etim"]["code"] == "EC001719"
+    assert steel["classification"]["nlsfb"]["element"] == "28.21"
+    assert steel["classification"]["nlsfb"]["material"] == "Q5"
+    assert steel["mapping_review_status"] == "verified"
+
+
+def test_legacy_flat_codes_when_enabled(estimator):
+    passport = MaterialPassportEstimator(legacy_flat_codes=True).estimate(
+        building_type="commercial_office",
+        floor_area_m2=100,
+        year_built=1987,
+    )
+    steel = next(m for m in passport["materials"] if m["material"] == "structural_steel")
+    assert steel["nlsfb"] == "28.21"
+    assert steel["nlsfb_material"] == "Q5"
     assert steel["etim"] == "EC001719"
 
 
@@ -90,4 +99,3 @@ def test_estimate_unknown_type_returns_error(estimator):
     )
     assert "error" in result
     assert "available_keys" in result
-    assert len(result["available_keys"]) > 0

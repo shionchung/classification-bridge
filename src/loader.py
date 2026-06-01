@@ -31,34 +31,65 @@ def load_uniclass_elements() -> pd.DataFrame:
 
 
 def load_nlsfb() -> pd.DataFrame:
+    """Legacy combined file if present."""
     return _read_excel(DATA_DIR / "nlsfb.xlsx")
+
+
+def load_nlsfb_table1() -> pd.DataFrame:
+    """NL-SfB Table 1 — elements by position/function (Madaster-oriented)."""
+    path = DATA_DIR / "nlsfb_table1.xlsx"
+    if path.exists():
+        return _read_excel(path)
+    return load_nlsfb()
+
+
+def load_nlsfb_table3() -> pd.DataFrame:
+    """NL-SfB Table 3 — materials (circularity-oriented)."""
+    path = DATA_DIR / "nlsfb_table3.xlsx"
+    if path.exists():
+        return _read_excel(path)
+    raise FileNotFoundError(
+        "Missing nlsfb_table3.xlsx. Download NL-SfB Table 3 from BIM Loket — see data/README.md"
+    )
 
 
 def load_etim() -> pd.DataFrame:
     return _read_excel(DATA_DIR / "etim.xlsx")
 
 
-def explore(df: pd.DataFrame, name: str) -> None:
+def explore(df: pd.DataFrame, name: str, max_rows: int = 20) -> None:
     print(f"\n=== {name} ===")
     print(f"Shape: {df.shape}")
     print(f"Columns: {list(df.columns)}")
-    print(df.head(20).to_string())
+    print(df.head(max_rows).to_string())
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Explore classification Excel files")
     parser.add_argument(
         "--table",
-        choices=["pr", "ss", "ef", "nlsfb", "etim", "all"],
+        choices=[
+            "pr",
+            "ss",
+            "ef",
+            "nlsfb",
+            "nlsfb1",
+            "nlsfb3",
+            "etim",
+            "all",
+        ],
         default="all",
     )
+    parser.add_argument("--rows", type=int, default=20, help="Rows to print per table")
     args = parser.parse_args()
 
     loaders = {
         "pr": ("Uniclass Pr", load_uniclass_products),
         "ss": ("Uniclass Ss", load_uniclass_systems),
         "ef": ("Uniclass EF", load_uniclass_elements),
-        "nlsfb": ("NL-SfB", load_nlsfb),
+        "nlsfb": ("NL-SfB (combined)", load_nlsfb),
+        "nlsfb1": ("NL-SfB Table 1 — elements", load_nlsfb_table1),
+        "nlsfb3": ("NL-SfB Table 3 — materials", load_nlsfb_table3),
         "etim": ("ETIM", load_etim),
     }
 
@@ -66,7 +97,7 @@ def main() -> None:
     for key in targets:
         label, fn = loaders[key]
         try:
-            explore(fn(), label)
+            explore(fn(), label, max_rows=args.rows)
         except FileNotFoundError as exc:
             print(f"\n[skip] {exc}")
 
