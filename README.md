@@ -4,8 +4,8 @@
 
 Most Australian buildings have no BIM model — only drawings, photos, and basic metadata. EU material passport platforms (Madaster, Circularise) expect **NL-SfB** and **ETIM** codes, while Australian BIM uses **Uniclass 2015**. This repo provides:
 
-1. **Project 4 — Classification Bridge** — hand-curated crosswalk (Uniclass → NL-SfB → ETIM) with a FastAPI lookup service  
-2. **Project 3 — Material Passport Estimator** — kg/m² intensities by building type and era → estimated passport JSON with embedded classification codes  
+1. **Classification Bridge** — hand-curated crosswalk (Uniclass → NL-SfB → ETIM) with a FastAPI lookup service  
+2. **Material Passport Estimator** — kg/m² intensities by building type and era → estimated passport JSON with embedded classification codes  
 
 > **Status:** Early research prototype. Mapping codes and material intensities include placeholders marked `low` confidence until verified against source tables and AHURI / Stephan & Crawford literature.
 
