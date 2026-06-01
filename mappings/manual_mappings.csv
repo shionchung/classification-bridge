@@ -9,6 +9,7 @@ concrete_slab,Concrete ground slab,Pr_20_65_97,Ss_25_10_20,2015,13.22,Q4,2005,EC
 softwood_timber,Softwood timber framing,Pr_20_93_74_96,Ss_25_13_75,2015,28.31,Q6,2005,EC001876,9,medium,draft,90x45 AU framing — verify Table 3 Q6 wood
 engineered_timber,Engineered timber LVL,Pr_20_93_52_52,Ss_25_13_76,2015,28.32,Q6,2005,EC001877,9,low,needs_source,LVL/glulam — expert review required
 brick_clay,Brick clay,Pr_20_30_13,Ss_25_20_30,2015,21.12,Q2,2005,EC000042,9,high,verified,"Uniclass masonry brick; ETIM EC000042 — re-verify in ETIM 9; T1 21.12; T3 Q2"
+concrete_masonry,Concrete masonry unit,Pr_20_30_52,Ss_25_20_35,2015,21.15,Q4,2005,EC000043,9,medium,draft,"CMU/block; T1 21.15 external wall masonry; T3 Q4 — verify ETIM in etim.xlsx"
 float_glass,Float glass,Pr_25_69_19,Ss_25_50_30,2015,31.21,Q8,2005,EC000463,9,high,verified,"Uniclass glazing; ETIM EC000463 — re-verify in ETIM 9; T1 31.21; T3 Q8 glass"
 aluminium,Aluminium extrusions,Pr_25_31_12,Ss_25_40_20,2015,32.21,Q3,2005,EC001234,9,low,needs_source,"T3 Q3 non-ferrous metals; verify ETIM in etim.xlsx"
 aluminium_cladding,Aluminium cladding panel,Pr_25_31_12,Ss_31_10_55,2015,32.22,Q3,2005,EC001234,9,low,draft,T3 Q3 non-ferrous; ACP — verify ETIM
