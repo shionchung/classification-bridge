@@ -1,0 +1,11 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.mappings.db
+mappings.db
+*.db
+.DS_Store
+data/*.xlsx
+data/*.xls
+!data/.gitkeep
