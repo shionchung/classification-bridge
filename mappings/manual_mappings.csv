@@ -14,9 +14,9 @@ float_glass,Float glass,Pr_25_69_19,Ss_25_50_30,2015,31.21,Q8,2005,EC000463,9,hi
 aluminium,Aluminium extrusions,Pr_25_31_12,Ss_25_40_20,2015,32.21,Q3,2005,EC001234,9,low,needs_source,"T3 Q3 non-ferrous metals; verify ETIM in etim.xlsx"
 aluminium_cladding,Aluminium cladding panel,Pr_25_31_12,Ss_31_10_55,2015,32.22,Q3,2005,EC001234,9,low,draft,T3 Q3 non-ferrous; ACP — verify ETIM
 plasterboard,Plasterboard gypsum,Pr_20_85_52,Ss_25_45_30,2015,23.41,Q7,2005,EC000891,9,high,verified,"ETIM EC000891 — re-verify in ETIM 9; T1 23.41; T3 Q7 gypsum; candidate EC003143 Gypsum board"
-mineral_wool,Mineral wool insulation,Pr_20_45_52,Ss_25_35_30,2015,27.32,m1,2005,EC010879,9,medium,draft,"T3 m1 mineral wool (nlsfb_table3); ETIM EC010879 Insulation blanket/-board (etim.xlsx); needs second source for verified"
+mineral_wool,Mineral wool insulation,Pr_20_45_52,Ss_25_35_30,2015,27.32,m1,2005,EC010879,9,medium,draft,"T3 m1 mineral wool/wool insulation confirmed in BIM Loket NL-SfB_Tabel_0-4_Update-V202112.xlsx via BIM-SPEED + adoc.pub indexed text; ETIM EC010879 Insulation blanket/-board still to verify in etim.xlsx"
 eps_insulation,EPS insulation,Pr_20_45_13,Ss_25_35_35,2015,27.33,Q9,2005,,9,medium,needs_source,"T3 Q9 synthetics OK; ETIM blank — EC000713 was busbar; candidate EC003101 insulating flakes/pearls/foam"
-membrane_roofing,Membrane roofing,Pr_25_45_52,Ss_25_25_70,2015,27.12,n6,2005,EC010567,9,medium,draft,"T1 27.12 flat roof (was invalid 25.12); T3 n6 synthetic (nlsfb_table3); ETIM EC010567 Roofing material; needs second source for verified"
+membrane_roofing,Membrane roofing,Pr_25_45_52,Ss_25_25_70,2015,27.12,n6,2005,EC010567,9,medium,draft,"T1 27.12 flat roof (was invalid 25.12); T3 n6 synthetic plastics/fibres confirmed in BIM Loket NL-SfB_Tabel_0-4_Update-V202112.xlsx via BIM-SPEED + adoc.pub indexed text; ETIM EC010567 Roofing material still to verify in etim.xlsx"
 copper,Copper pipe,Pr_55_70_52,Ss_55_15_30,2015,54.21,Q3,2005,EC010234,9,medium,draft,T3 Q3 non-ferrous; verify ETIM and Table 1
 pvc,PVC pipe,Pr_55_70_96,Ss_55_15_35,2015,54.22,Q9,2005,EC010235,9,low,draft,Drainage/supply
 galvanised_steel,Galvanised steel sheet,Pr_20_93_52,Ss_25_13_72,2015,28.25,Q5,2005,EC001720,9,low,draft,Roofing/cladding substrate
