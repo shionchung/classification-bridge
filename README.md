@@ -24,7 +24,7 @@ Most Australian buildings have no BIM model — only drawings, photos, and basic
 **Requirements:** Python 3.11+ ([python.org](https://www.python.org/downloads/)) — enable “Add python.exe to PATH” on Windows.
 
 ```powershell
-git clone https://github.com/YOUR_USERNAME/classification-bridge.git
+git clone https://github.com/shionchung/classification-bridge.git
 cd classification-bridge
 python -m venv venv
 .\venv\Scripts\activate
