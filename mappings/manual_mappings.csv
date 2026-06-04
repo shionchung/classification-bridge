@@ -1,24 +1,24 @@
 material_key,material_name,uniclass_pr,uniclass_ss,uniclass_edition,nlsfb_element,nlsfb_material,nlsfb_edition,etim_code,etim_version,confidence,review_status,mapping_notes
-structural_steel,Structural steel I-beam,Pr_20_93_74_16,Ss_25_13_70,2015,28.21,Q5,2005,EC001719,9,high,verified,"Uniclass Pr NBS 2015; ETIM EC001719 (verify in etim.xlsx); NL-SfB T1 28.21; T3 Q5 steel/iron (nlsfb_table3)"
-reinforced_concrete,Reinforced concrete in-situ,Pr_20_65_97,Ss_25_13_30,2015,28.10,Q4,2005,EC001483,9,high,verified,"T1 28.10 kolommen/liggers general (nlsfb_table1); T3 Q4; ETIM EC001483 — re-verify class title in ETIM 9 FlatExcel"
-reinforced_concrete_slab,Reinforced concrete slab,Pr_20_65_97,Ss_25_13_30,2015,28.22,Q4,2005,EC001483,9,medium,verified,"T1 28.22 load-bearing floors (wanden en vloeren); not 28.11 kolom/ligger; nlsfb_table1"
-reinforced_concrete_column,Reinforced concrete column,Pr_20_65_97,Ss_25_13_30,2015,28.11,Q4,2005,EC001483,9,medium,verified,"T1 28.11 kolom-/liggerconstructies; 28.12 is spanten not columns (nlsfb_table1)"
-reinforced_concrete_beam,Reinforced concrete beam,Pr_20_65_97,Ss_25_13_30,2015,28.11,Q4,2005,EC001483,9,medium,verified,"T1 28.11 kolommen en liggers (includes beams); nlsfb_table1"
+structural_steel,Structural steel I-beam,Pr_20_93_74_16,Ss_25_13_70,2015,28.21,Q5,2005,EC001719,9,high,draft,"Uniclass Pr NBS 2015; ETIM EC001719 needs confirmation in etim.xlsx; NL-SfB T1 28.21; T3 Q5 steel/iron (nlsfb_table3)"
+reinforced_concrete,Reinforced concrete in-situ,Pr_20_65_97,Ss_25_13_30,2015,28.10,Q4,2005,EC001483,9,high,draft,"T1 28.10 kolommen/liggers general (nlsfb_table1); T3 Q4; ETIM EC001483 needs confirmation in etim.xlsx"
+reinforced_concrete_slab,Reinforced concrete slab,Pr_20_65_97,Ss_25_13_30,2015,28.22,Q4,2005,EC001483,9,medium,draft,"T1 28.22 load-bearing floors (wanden en vloeren); not 28.11 kolom/ligger; nlsfb_table1; ETIM EC001483 needs confirmation in etim.xlsx"
+reinforced_concrete_column,Reinforced concrete column,Pr_20_65_97,Ss_25_13_30,2015,28.11,Q4,2005,EC001483,9,medium,draft,"T1 28.11 kolom-/liggerconstructies; 28.12 is spanten not columns (nlsfb_table1); ETIM EC001483 needs confirmation in etim.xlsx"
+reinforced_concrete_beam,Reinforced concrete beam,Pr_20_65_97,Ss_25_13_30,2015,28.11,Q4,2005,EC001483,9,medium,draft,"T1 28.11 kolommen en liggers (includes beams); nlsfb_table1; ETIM EC001483 needs confirmation in etim.xlsx"
 precast_concrete,Precast concrete panel,Pr_20_65_52,Ss_25_13_35,2015,28.21,Q4,2005,EC001484,9,medium,draft,"T1 28.21 wall/floor frames; was 28.12 spanten; verify ETIM"
-concrete_slab,Concrete ground slab,Pr_20_65_97,Ss_25_10_20,2015,13.22,Q4,2005,EC001483,9,medium,verified,"T1 13.22 constructive floor on ground (nlsfb_table1); was 28.11"
+concrete_slab,Concrete ground slab,Pr_20_65_97,Ss_25_10_20,2015,13.22,Q4,2005,EC001483,9,medium,draft,"T1 13.22 constructive floor on ground (nlsfb_table1); was 28.11; ETIM EC001483 needs confirmation in etim.xlsx"
 softwood_timber,Softwood timber framing,Pr_20_93_74_96,Ss_25_13_75,2015,28.31,Q6,2005,EC001876,9,medium,draft,90x45 AU framing — verify Table 3 Q6 wood
 engineered_timber,Engineered timber LVL,Pr_20_93_52_52,Ss_25_13_76,2015,28.32,Q6,2005,EC001877,9,low,needs_source,LVL/glulam — expert review required
-brick_clay,Brick clay,Pr_20_30_13,Ss_25_20_30,2015,21.12,Q2,2005,EC000042,9,high,verified,"Uniclass masonry brick; ETIM EC000042 — re-verify in ETIM 9; T1 21.12; T3 Q2"
-concrete_masonry,Concrete masonry unit,Pr_20_30_52,Ss_25_20_35,2015,21.15,Q4,2005,EC000043,9,medium,draft,"CMU/block; T1 21.15 external wall masonry; T3 Q4 — verify ETIM in etim.xlsx"
-float_glass,Float glass,Pr_25_69_19,Ss_25_50_30,2015,31.21,Q8,2005,EC000463,9,high,verified,"Uniclass glazing; ETIM EC000463 — re-verify in ETIM 9; T1 31.21; T3 Q8 glass"
+brick_clay,Brick clay,Pr_20_30_13,Ss_25_20_30,2015,21.12,Q2,2005,,9,high,needs_source,"Uniclass masonry brick; EC000042 = MCB (ETIM viewer confirmed wrong); needs brick/clay masonry class from viewer search"
+concrete_masonry,Concrete masonry unit,Pr_20_30_52,Ss_25_20_35,2015,21.15,Q4,2005,,9,medium,needs_source,"CMU/block; EC000043 not yet verified in ETIM viewer; needs masonry class confirmation before promotion"
+float_glass,Float glass,Pr_25_69_19,Ss_25_50_30,2015,31.21,Q8,2005,EC000463,9,high,needs_source,"Uniclass glazing; ETIM EC000463 not yet confirmed in ETIM Viewer; re-verify before promotion"
 aluminium,Aluminium extrusions,Pr_25_31_12,Ss_25_40_20,2015,32.21,Q3,2005,,9,low,needs_source,"T3 Q3 non-ferrous metals; no suitable ETIM class found for generic aluminium extrusion — may require product-specific lookup"
 aluminium_cladding,Aluminium cladding panel,Pr_25_31_12,Ss_31_10_55,2015,32.22,Q3,2005,,9,low,draft,"T3 Q3 non-ferrous; ACP — EC001234 not found in etim.xlsx; no suitable ETIM class identified for aluminium cladding panel"
-plasterboard,Plasterboard gypsum,Pr_20_85_52,Ss_25_45_30,2015,23.41,Q7,2005,EC000891,9,high,verified,"ETIM EC000891 — re-verify in ETIM 9; T1 23.41; T3 Q7 gypsum; candidate EC003143 Gypsum board"
+plasterboard,Plasterboard gypsum,Pr_20_85_52,Ss_25_45_30,2015,23.41,Q7,2005,EC003143,9,high,verified,"ETIM EC003143 confirmed in etim.xlsx as Gypsum board / plasterboard; T1 23.41; T3 Q7 gypsum"
 mineral_wool,Mineral wool insulation,Pr_20_45_52,Ss_25_35_30,2015,27.32,m1,2005,EC010879,9,medium,verified,"T3 m1 mineral wool/wool insulation confirmed in BIM Loket NL-SfB_Tabel_0-4_Update-V202112.xlsx via BIM-SPEED + adoc.pub indexed text; ETIM EC010879 confirmed in etim.xlsx"
 eps_insulation,EPS insulation,Pr_20_45_13,Ss_25_35_35,2015,27.33,Q9,2005,EC003101,9,medium,draft,"T3 Q9 synthetics OK; ETIM EC003101 confirmed in etim.xlsx as insulating flakes/pearls/foam; this appears to be the closest available ETIM 9 fit for EPS insulation, though it is not explicitly labelled as EPS board"
 membrane_roofing,Membrane roofing,Pr_25_45_52,Ss_25_25_70,2015,27.12,n6,2005,EC010567,9,medium,verified,"T1 27.12 flat roof (was invalid 25.12); T3 n6 synthetic plastics/fibres confirmed in BIM Loket NL-SfB_Tabel_0-4_Update-V202112.xlsx via BIM-SPEED + adoc.pub indexed text; ETIM EC010567 confirmed in etim.xlsx"
-copper,Copper pipe,Pr_55_70_52,Ss_55_15_30,2015,54.21,Q3,2005,EC010234,9,medium,draft,T3 Q3 non-ferrous; verify ETIM and Table 1
-pvc,PVC pipe,Pr_55_70_96,Ss_55_15_35,2015,54.22,Q9,2005,EC010235,9,low,draft,Drainage/supply
+copper,Copper pipe,Pr_55_70_52,Ss_55_15_30,2015,54.21,Q3,2005,EC011533,9,medium,verified,"T3 Q3 non-ferrous; ETIM EC011533 confirmed online as Copper pipe"
+pvc,PVC pipe,Pr_55_70_96,Ss_55_15_35,2015,54.22,Q9,2005,,9,low,needs_source,"Drainage/supply; EC010235 = Urinal (ETIM viewer confirmed wrong)"
 galvanised_steel,Galvanised steel sheet,Pr_20_93_52,Ss_25_13_72,2015,28.25,Q5,2005,EC001720,9,low,draft,Roofing/cladding substrate
 portland_cement,Portland cement,Pr_20_65_13,Ss_25_10_10,2015,28.01,Q4,2005,EC001480,9,low,draft,Bulk material — often not in BIM exports
 ceramic_tile,Ceramic tile,Pr_20_80_52,Ss_25_55_30,2015,23.52,Q2,2005,EC000950,9,medium,draft,Floor/wall finish
